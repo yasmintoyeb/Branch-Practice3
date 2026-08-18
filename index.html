@@ -38,6 +38,7 @@
             font-size: 26px;
             font-weight: bold;
             color: #2563eb;
+            text-decoration: none;
         }
         .logo span {
             color: #111;
@@ -46,6 +47,7 @@
             list-style: none;
             display: flex;
             gap: 30px;
+            align-items: center;
         }
         nav a {
             text-decoration: none;
@@ -56,6 +58,42 @@
         nav a:hover {
             color: #2563eb;
         }
+
+        /* Auth Buttons */
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .btn-signin {
+            background: transparent;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-signin:hover {
+            background: #2563eb;
+            color: white;
+        }
+        .btn-signup {
+            background: #2563eb;
+            color: white;
+            border: 2px solid #2563eb;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-signup:hover {
+            background: #174fc1;
+            border-color: #174fc1;
+        }
+
         .cart {
             background: #2563eb;
             color: white;
@@ -63,6 +101,7 @@
             border-radius: 8px;
             cursor: pointer;
             border: none;
+            margin-left: 10px;
         }
 
         /* ================= HERO ================= */
@@ -348,6 +387,9 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
+            .auth-buttons {
+                margin-top: 10px;
+            }
             .hero-text h1 {
                 font-size: 40px;
             }
@@ -366,9 +408,9 @@
     <!-- ================= HEADER ================= -->
     <header>
         <div class="navbar">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 Phone<span>Zone</span>
-            </div>
+            </a>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
@@ -378,9 +420,14 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <button class="cart">
-                🛒 Cart <span id="cart-count">0</span>
-            </button>
+
+            <div class="auth-buttons">
+                <a href="sign-in.html" class="btn-signin">Sign In</a>
+                <a href="sign-up.html" class="btn-signup">Sign Up</a>
+                <button class="cart">
+                    🛒 Cart <span id="cart-count">0</span>
+                </button>
+            </div>
         </div>
     </header>
 
