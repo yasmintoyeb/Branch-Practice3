@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | PhoneZone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #111;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            margin-left: 25px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        /* Main Content */
+        .signin-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .signin-box {
+            background: white;
+            width: 100%;
+            max-width: 420px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .signin-header {
+            background: #2563eb;
+            color: white;
+            padding: 30px 25px;
+            text-align: center;
+        }
+
+        .signin-header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .signin-header p {
+            opacity: 0.9;
+            font-size: 15px;
+        }
+
+        .signin-form {
+            padding: 30px 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #555;
+        }
+
+        .remember input {
+            width: 16px;
+            height: 16px;
+            accent-color: #2563eb;
+        }
+
+        .forgot-password {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .btn-signin {
+            width: 100%;
+            padding: 14px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-signin:hover {
+            background: #174fc1;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .divider span {
+            padding: 0 12px;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .social-btn:hover {
+            background: #f8f8f8;
+            border-color: #ccc;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .signup-link a {
+            color: #2563eb;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #0b1120;
+            color: #aaa;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .signin-header h1 {
+                font-size: 24px;
+            }
+
+            .options {
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start;
+            }
+
+            .social-login {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">Phone<span>Zone</span></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html#products">Products</a>
+                <a href="signup.html">Sign Up</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sign In Form -->
+    <div class="signin-container">
+        <div class="signin-box">
+            <div class="signin-header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to your PhoneZone account</p>
+            </div>
+
+            <form class="signin-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="options">
+                    <label class="remember">
+                        <input type="checkbox" name="remember">
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn-signin">Sign In</button>
+
+                <div class="divider">
+                    <span>or continue with</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="social-btn">
+                        🔵 Google
+                    </button>
+                    <button type="button" class="social-btn">
+                        📘 Facebook
+                    </button>
+                </div>
+
+                <div class="signup-link">
+                    Don’t have an account? <a href="signup.html">Sign Up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 PhoneZone. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
