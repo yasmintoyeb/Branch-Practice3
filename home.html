@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneZone | Premium Smartphones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+        .logo span {
+            color: #111;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #2563eb;
+        }
+        .cart {
+            background: #2563eb;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+        .hero-text {
+            max-width: 550px;
+        }
+        .hero-text h1 {
+            font-size: 55px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .hero-text h1 span {
+            color: #2563eb;
+        }
+        .hero-text p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #174fc1;
+            transform: translateY(-2px);
+        }
+        .hero-image {
+            width: 400px;
+            height: 480px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ================= SECTION ================= */
+        section {
+            padding: 80px 20px;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .section-title p {
+            color: #777;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* ================= SEARCH ================= */
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+        .search-box input:focus {
+            border-color: #2563eb;
+        }
+
+        /* ================= PRODUCTS ================= */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+        .phone-image {
+            height: 230px;
+            background: #f1f5f9;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .phone-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+        .product-card:hover .phone-image img {
+            transform: scale(1.05);
+        }
+        .product-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        .product-card p {
+            color: #777;
+            margin-bottom: 12px;
+        }
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+        .buy-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .buy-btn:hover {
+            background: #174fc1;
+        }
+
+        /* ================= ABOUT ================= */
+        .about {
+            background: white;
+        }
+        .about-content {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-icon {
+            min-width: 250px;
+            height: 250px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .about-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .about-text h2 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            line-height: 1.8;
+            color: #666;
+        }
+
+        /* ================= SERVICES ================= */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .service {
+            background: white;
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+        .service-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+        .service h3 {
+            margin-bottom: 10px;
+        }
+        .service p {
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* ================= CONTACT ================= */
+        .contact {
+            background: #111827;
+            color: white;
+        }
+        .contact-content {
+            max-width: 800px;
+            margin: auto;
+        }
+        .contact form {
+            display: grid;
+            gap: 15px;
+        }
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+        }
+        .contact textarea {
+            height: 150px;
+            resize: none;
+        }
+        .contact button {
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background: #0b1120;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 900px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                margin-bottom: 40px;
+            }
+            .services {
+                grid-template-columns: 1fr;
+            }
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar {
+                height: auto;
+                padding: 15px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero-text h1 {
+                font-size: 40px;
+            }
+            .hero-image {
+                width: 280px;
+                height: 350px;
+            }
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                Phone<span>Zone</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="cart">
+                🛒 Cart <span id="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ================= HOME ================= -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1>
+                Find Your
+                <span>Perfect Phone</span>
+            </h1>
+            <p>
+                Discover the latest smartphones with powerful
+                performance, amazing cameras, and modern design.
+            </p>
+            <a href="#products" class="btn">
+                Shop Now →
+            </a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80" alt="Premium Smartphone">
+        </div>
+    </section>
+
+    <!-- ================= PRODUCTS ================= -->
+    <section id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Products</h2>
+                <p>Choose your favorite smartphone</p>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="search" placeholder="🔍 Search phone...">
+            </div>
+
+            <div class="products" id="product-list">
+
+                <!-- iPhone 15 Pro -->
+                <div class="product-card">
+                    <div class="phone-image">
+                        <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&q=80" alt="iPhone 15 Pro">
+                    </div>
+                    <h3>iPhone 15 Pro</h3>
+                    <p>256GB • Titanium</p>
+                    <div class="price">$999</div>
+                    <button class="buy-btn" onclick="addCart()">Add to Cart</button>
+                </div>
+
+                <!-- Samsung Galaxy S24 -->
+                <div class="product-card">
+                    <div class="phone-image">
+                        <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=600&q=80" alt="Samsung Galaxy S24">
+                    </div>
+                    <h3>Samsung Galaxy S24</h3>
+                    <p>256GB • AMOLED Display</p>
+                    <div class="price">$899</div>
+                    <button class="buy-btn" onclick="addCart()">Add to Cart</button>
+                </div>
+
+                <!-- Google Pixel 9 -->
+                <div class="product-card">
+                    <div class="phone-image">
+                        <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&q=80" alt="Google Pixel 9">
+                    </div>
+                    <h3>Google Pixel 9</h3>
+                    <p>128GB • AI Camera</p>
+                    <div class="price">$799</div>
+                    <button class="buy-btn" onclick="addCart()">Add to Cart</button>
+                </div>
+
+                <!-- Xiaomi 14 -->
+                <div class="product-card">
+                    <div class="phone-image">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80" alt="Xiaomi 14">
+                    </div>
+                    <h3>Xiaomi 14</h3>
+                    <p>512GB • Leica Camera</p>
+                    <div class="price">$699</div>
+                    <button class="buy-btn" onclick="addCart()">Add to Cart</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-icon">
+                <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80" alt="About PhoneZone">
+            </div>
+            <div class="about-text">
+                <h2>About PhoneZone</h2>
+                <p>
+                    PhoneZone is a modern smartphone store that provides
+                    high-quality smartphones at competitive prices.
+                    We want to make it easy for customers to find
+                    the perfect phone for their needs.
+                </p>
+                <br>
+                <p>
+                    Our goal is to provide excellent products,
+                    affordable prices, and great customer service.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us?</h2>
+                <p>We provide more than just smartphones.</p>
+            </div>
+            <div class="services">
+                <div class="service">
+                    <div class="service-icon">🚚</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Get your phone delivered quickly and safely.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Warranty</h3>
+                    <p>All phones come with warranty and customer support.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">💳</div>
+                    <h3>Secure Payment</h3>
+                    <p>Safe and secure payment for every purchase.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Have a question? Send us a message.</p>
+            </div>
+            <form onsubmit="sendMessage(event)">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="text" placeholder="Phone Number">
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <p>© 2026 PhoneZone. All Rights Reserved.</p>
+    </footer>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        // Shopping Cart
+        let cartCount = 0;
+        function addCart() {
+            cartCount++;
+            document.getElementById("cart-count").textContent = cartCount;
+            alert("Phone added to cart! 🛒");
+        }
+
+        // Contact Form
+        function sendMessage(event) {
+            event.preventDefault();
+            alert("Thank you! Your message has been sent. 😊");
+            event.target.reset();
+        }
+
+        // Product Search
+        const search = document.getElementById("search");
+        const products = document.querySelectorAll(".product-card");
+
+        search.addEventListener("keyup", function () {
+            const keyword = search.value.toLowerCase();
+            products.forEach(function (product) {
+                const name = product.querySelector("h3").textContent.toLowerCase();
+                if (name.includes(keyword)) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
